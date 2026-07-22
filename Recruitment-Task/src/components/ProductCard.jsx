@@ -4,7 +4,7 @@ export function ProductCard({ product }) {
   const addToCart = useCart((state) => state.addToCart);
 
   return (
-    <div className="card shadow-sm border-light-subtle">
+    <div className="card h-100shadow-sm border-light-subtle">
       <div className="position-relative bg-light">
         <span className="badge text-bg-secondary position-absolute top-0 start-0 m-2 text-capitalize z-1">
           {product.category.replace(/-/g, " ")}
