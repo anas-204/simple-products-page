@@ -4,7 +4,7 @@ export function ProductCard({ product }) {
   const addToCart = useCart((state) => state.addToCart);
 
   return (
-    <div className="card h-100 shadow-sm border-light-subtle">
+    <div className="card shadow-sm border-light-subtle">
       <div className="position-relative bg-light">
         <span className="badge text-bg-secondary position-absolute top-0 start-0 m-2 text-capitalize z-1">
           {product.category.replace(/-/g, " ")}
@@ -12,18 +12,13 @@ export function ProductCard({ product }) {
         <img
           src={product.thumbnail}
           alt={product.title}
-          loading="lazy"
           className="card-img-top object-fit-cover"
-          style={{ aspectRatio: "1/1" }}
         />
       </div>
 
       <div className="card-body d-flex flex-column gap-2">
         <div className="d-flex justify-content-between align-items-start gap-2">
-          <h5
-            className="card-title text-truncate mb-0 fw-semibold"
-            title={product.title}
-          >
+          <h5 className="card-title mb-0 fw-semibold" title={product.title}>
             {product.title}
           </h5>
           <small className="text-muted text-nowrap d-flex align-items-center gap-1">
@@ -34,9 +29,6 @@ export function ProductCard({ product }) {
         <p
           className="card-text small text-muted mb-0"
           style={{
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
             overflow: "hidden",
           }}
         >
@@ -55,7 +47,7 @@ export function ProductCard({ product }) {
               href={`/products/${product.id}`}
               className="btn btn-outline-dark w-100 btn-sm d-flex align-items-center justify-content-center gap-1"
             >
-              👁️ Details
+              Details
             </a>
           </div>
           <div className="col-6">

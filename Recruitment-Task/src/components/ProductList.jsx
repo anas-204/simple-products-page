@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fetchProducts, fetchCategories } from "../api";
 import { ProductCard } from "../components/ProductCard";
 
 export function ProductList() {
-  // 1. Data States
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // 2. Filter States (Separate & Simple)
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
 
-  // 3. Fetch Data on Mount
   useEffect(() => {
     Promise.all([fetchProducts(), fetchCategories()])
       .then(([prods, cats]) => {
@@ -29,7 +25,6 @@ export function ProductList() {
       });
   }, []);
 
-  // 4. Filtering Logic (Early Return)
   const filteredProducts = products.filter((product) => {
     if (search && !product.title.toLowerCase().includes(search.toLowerCase()))
       return false;
@@ -39,7 +34,6 @@ export function ProductList() {
     return true;
   });
 
-  // 5. Loading & Error Handlers
   if (loading)
     return <div className="text-center p-5 fs-4 text-muted">Loading... ⏳</div>;
   if (error)
@@ -49,7 +43,6 @@ export function ProductList() {
     <div className="container py-5">
       <h1 className="mb-4 fw-bold">All Products</h1>
 
-      {/* Filter Bar (Bootstrap Grid) */}
       <div className="row g-2 mb-4 bg-white p-3 rounded shadow-sm border border-light-subtle">
         <div className="col-12 col-md-4">
           <input
@@ -108,7 +101,6 @@ export function ProductList() {
         </div>
       </div>
 
-      {/* Product Grid */}
       {!filteredProducts.length ? (
         <div className="text-center p-5 text-muted">
           No products found matching your filters.
