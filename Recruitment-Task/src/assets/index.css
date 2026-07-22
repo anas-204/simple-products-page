@@ -1,0 +1,25 @@
+
+:root {
+  /* Overriding Bootstrap's default primary color with yours */
+  --bs-primary: #0f172a;
+  --bs-primary-rgb: 15, 23, 42;
+  
+  /* Background colors */
+  --bs-body-bg: #f8fafc;
+  --bs-body-color: #020617;
+}
+
+/* Card hover animation */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
